@@ -50,8 +50,8 @@ struct ResearchInfo Species::Mix(const Species& first, const Species& second, st
     
     ResearchInfo result;
     result.duration = 2;
-    result.difficulty = abs(first.color_ - second.color_) + abs(first.size_ + second.size_) 
-        + abs(first.taste_ + second.taste_);
+    result.difficulty = abs(first.color_ - second.color_) + abs(first.size_ - second.size_)
+        + abs(first.taste_ - second.taste_);
     result.output = Species{static_cast<int>(color), static_cast<int>(size), static_cast<int>(taste)};
     return result;
 }

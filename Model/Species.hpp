@@ -141,7 +141,6 @@ struct MagicSector
 
 class MagicMapper
 {
-    friend int main();
     using CoordType = MagicSector::CoordType;
         
     std::vector<MagicSector> sectors_;
@@ -151,8 +150,10 @@ class MagicMapper
     
 public:
     MagicMapper(std::mt19937 &rng, const unsigned n_sectors);
-    
-    const MagicSector &sector_of(const Species &species) const;
+
+    const MagicSector &sector_by_index(unsigned index) { return sectors_.at(index); }
+    [[nodiscard]] unsigned sectors_number() const { return sectors_.size(); }
+    [[nodiscard]] const MagicSector &sector_of(const Species &species) const;
 };
 
 #endif // SPECIES_HPP
